@@ -277,19 +277,22 @@ const QUESTIONS = [
   {
     id: 27, section: 4, type: "dragdrop",
     instruction: "Arrange the words to make a correct English sentence.",
-    blocks:  ["By", "the", "time", "he", "arrived", "she", "had", "left"],
+    fixedStart: ["By", "the", "time"],
+    blocks:  ["he", "arrived", "she", "had", "left"],
     correct: ["By", "the", "time", "he", "arrived", "she", "had", "left"],
   },
   {
     id: 28, section: 4, type: "dragdrop",
     instruction: "Arrange the words to make a correct English sentence.",
-    blocks:  ["If", "it", "rains", "we", "will", "stay", "inside"],
+    fixedStart: ["If"],
+    blocks:  ["it", "rains", "we", "will", "stay", "inside"],
     correct: ["If", "it", "rains", "we", "will", "stay", "inside"],
   },
   {
     id: 29, section: 4, type: "dragdrop",
     instruction: "Arrange the words to make a correct English sentence.",
-    blocks:  ["I", "was", "reading", "when", "the", "lights", "went", "out"],
+    fixedStart: ["I"],
+    blocks:  ["was", "reading", "when", "the", "lights", "went", "out"],
     correct: ["I", "was", "reading", "when", "the", "lights", "went", "out"],
   },
   {
@@ -301,13 +304,15 @@ const QUESTIONS = [
   {
     id: 31, section: 4, type: "dragdrop",
     instruction: "Arrange the words to make a correct English sentence.",
-    blocks:  ["If", "I", "had", "known", "I", "would", "have", "told", "you"],
+    fixedStart: ["If"],
+    blocks:  ["I", "had", "known", "I", "would", "have", "told", "you"],
     correct: ["If", "I", "had", "known", "I", "would", "have", "told", "you"],
   },
   {
     id: 32, section: 4, type: "dragdrop",
     instruction: "Arrange the words to make a correct English sentence.",
-    blocks:  ["They", "are", "going", "to", "open", "a", "new", "office", "next", "month"],
+    fixedStart: ["They"],
+    blocks:  ["are", "going", "to", "open", "a", "new", "office", "next", "month"],
     correct: ["They", "are", "going", "to", "open", "a", "new", "office", "next", "month"],
   },
   {

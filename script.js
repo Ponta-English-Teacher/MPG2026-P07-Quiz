@@ -230,6 +230,23 @@ function renderDragDrop(q, container) {
     pool = [...q.blocks].sort(() => Math.random() - 0.5);
   }
 
+  // Fixed prefix — shown for questions where the first word(s) are anchored
+  if (q.fixedStart && q.fixedStart.length) {
+    const prefixDiv = document.createElement("div");
+    prefixDiv.className = "drag-fixed-prefix";
+    const prefixLabel = document.createElement("span");
+    prefixLabel.className = "drag-fixed-label";
+    prefixLabel.textContent = "Given:";
+    prefixDiv.appendChild(prefixLabel);
+    q.fixedStart.forEach(word => {
+      const tok = document.createElement("span");
+      tok.className = "drag-token locked";
+      tok.textContent = word;
+      prefixDiv.appendChild(tok);
+    });
+    container.appendChild(prefixDiv);
+  }
+
   // Answer zone
   const ansLabel = document.createElement("div");
   ansLabel.className = "drag-zone-label";
@@ -370,7 +387,8 @@ function checkDragDrop(q, container, ansZone) {
   const arranged = [...ansZone.querySelectorAll(".drag-token")].map(t => t.dataset.text);
   if (arranged.length === 0) { alert("Please arrange at least one block first."); return; }
 
-  const isRight = JSON.stringify(arranged) === JSON.stringify(q.correct);
+  const fullArranged = [...(q.fixedStart || []), ...arranged];
+  const isRight = JSON.stringify(fullArranged) === JSON.stringify(q.correct);
   state.answers[q.id]  = { value: arranged, checked: true, correct: isRight };
   state.checked[q.id]  = true;
   state.dragState[q.id] = arranged;
@@ -755,9 +773,12 @@ function renderReview() {
         <div class="review-row"><span class="review-label">Note:</span>
           <span>${q.explanation}</span></div>`;
     } else if (q.type === "dragdrop") {
+      const givenWords = Array.isArray(ans?.value)
+        ? [...(q.fixedStart || []), ...ans.value].join(" ")
+        : "(not answered)";
       html += `<div class="review-stem">${q.instruction}</div>
         <div class="review-row"><span class="review-label">Your order:</span>
-          <span class="given">${Array.isArray(ans?.value) ? ans.value.join(" ") : "(not answered)"}</span></div>
+          <span class="given">${givenWords}</span></div>
         <div class="review-row"><span class="review-label">Correct:</span>
           <span class="correct">${q.correct.join(" ")}</span></div>`;
     } else if (q.type === "dictation") {

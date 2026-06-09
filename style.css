@@ -403,6 +403,21 @@ button { cursor: pointer; font-family: inherit; }
   margin-bottom: 20px;
   background: var(--color-bg);
 }
+.drag-fixed-prefix {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.drag-fixed-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
 .drag-token {
   display: inline-flex;
   align-items: center;
