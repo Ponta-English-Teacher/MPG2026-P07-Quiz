@@ -321,15 +321,29 @@ function renderDragDrop(q, container) {
     });
   });
 
-  // Check button
+  // Check + Reset buttons
   if (!isChecked) {
     const checkRow = document.createElement("div");
     checkRow.className = "check-btn-row";
+
+    const resetBtn = document.createElement("button");
+    resetBtn.className = "btn btn-secondary";
+    resetBtn.textContent = "Reset Sentence";
+    resetBtn.addEventListener("click", () => {
+      ansZone.innerHTML = "";
+      poolZone.innerHTML = "";
+      q.blocks.forEach(text => poolZone.appendChild(makeToken(text, false)));
+      delete state.dragState[q.id];
+      saveProgress();
+    });
+    checkRow.appendChild(resetBtn);
+
     const checkBtn = document.createElement("button");
     checkBtn.className = "btn btn-accent";
     checkBtn.textContent = "Check";
     checkBtn.addEventListener("click", () => checkDragDrop(q, container, ansZone));
     checkRow.appendChild(checkBtn);
+
     container.appendChild(checkRow);
   }
 
