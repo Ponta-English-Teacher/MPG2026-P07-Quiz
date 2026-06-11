@@ -277,8 +277,8 @@ const QUESTIONS = [
   {
     id: 27, section: 4, type: "dragdrop",
     instruction: "Arrange the words to make a correct English sentence.",
-    fixedStart: ["By", "the", "time"],
-    blocks:  ["he", "arrived", "she", "had", "left"],
+    fixedStart: ["By", "the", "time", "he"],
+    blocks:  ["arrived", "she", "had", "left"],
     correct: ["By", "the", "time", "he", "arrived", "she", "had", "left"],
   },
   {
